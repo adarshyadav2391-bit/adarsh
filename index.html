@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroLink - LinkedIn for Agriculture & Sustainability</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-green: #2E7D32;
+            --secondary-green: #4CAF50;
+            --accent-green: #81C784;
+            --dark-green: #1B5E20;
+            --cream: #FFF8E1;
+            --warm-white: #FFFEF7;
+            --earth-brown: #6D4C41;
+            --gold: #FFB300;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--warm-white);
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--cream);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--secondary-green);
+            border-radius: 6px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-green);
+        }
+
+        /* Header/Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(46, 125, 50, 0.1);
+            animation: slideDown 0.6s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            animation: fadeIn 0.8s ease-out 0.3s backwards;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+        }
+
+        .brand-text h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.8rem;
+            color: var(--primary-green);
+            margin: 0;
+        }
+
+        .brand-text p {
+            font-size: 0.7rem;
+            color: var(--earth-brown);
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary-green);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-green);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .cta-button {
+            background: var(--primary-green);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(46, 125, 50, 0.2);
+        }
+
+        .cta-button:hover {
+            background: var(--dark-green);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(46, 125, 50, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 90px;
+            min-height: calc(100vh - 90px);
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--warm-white) 0%, var(--cream) 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 80%;
+            height: 150%;
+            background: radial-gradient(circle, rgba(76, 175, 80, 0.08) 0%, transparent 70%);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(-30px, 30px) rotate(5deg); }
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 4rem;
+            color: var(--primary-green);
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            color: var(--earth-brown);
+            margin-bottom: 2rem;
+            font-weight: 400;
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+            animation: fadeInUp 0.8s ease-out 0.4s backwards;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            animation: fadeInUp 0.8s ease-out 0.6s backwards;
+        }
+
+        .primary-btn {
+            background: var(--primary-green);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 6px 25px rgba(46, 125, 50, 0.3);
+        }
+
+        .primary-btn:hover {
+            background: var(--dark-green);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(46, 125, 50, 0.4);
+        }
+
+        .secondary-btn {
+            background: transparent;
+            color: var(--primary-green);
+            padding: 1rem 2.5rem;
+            border: 2px solid var(--primary-green);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+
+        .secondary-btn:hover {
+            background: var(--primary-green);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .hero-visual {
+            position: relative;
+            animation: fadeIn 1s ease-out 0.5s backwards;
+        }
+
+        .hero-image-container {
+            background: var(--secondary-green);
+            border-radius: 30px;
+            padding: 3rem;
+            box-shadow: 0 20px 60px rgba(46, 125, 50, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-image-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, transparent 0%, rgba(255, 255, 255, 0.1) 100%);
+        }
+
+        .connection-network {
+            position: relative;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .network-node {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .network-node.center {
+            width: 120px;
+            height: 120px;
+            background: var(--gold);
+            z-index: 10;
+        }
+
+        .network-node:not(.center) {
+            width: 90px;
+            height: 90px;
+        }
+
+        .network-node:nth-child(1) { animation-delay: 0s; }
+        .network-node:nth-child(2) { animation-delay: 0.3s; }
+        .network-node:nth-child(3) { animation-delay: 0.6s; }
+        .network-node:nth-child(4) { animation-delay: 0.9s; }
+        .network-node:nth-child(5) { animation-delay: 1.2s; }
+
+        .node-icon {
+            font-size: 2rem;
+        }
+
+        .node-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #333;
+            text-align: center;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Features Section */
+        .features {
+            padding: 6rem 2rem;
+            background: white;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-header h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 3rem;
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .features-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .feature-card {
+            background: var(--cream);
+            padding: 2.5rem;
+            border-radius: 20px;
+            transition: all 0.4s;
+            border: 2px solid transparent;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(46, 125, 50, 0.15);
+            border-color: var(--secondary-green);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-card h4 {
+            font-size: 1.5rem;
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .feature-card p {
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-card li {
+            padding: 0.5rem 0;
+            color: #555;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .feature-card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--secondary-green);
+            font-weight: bold;
+        }
+
+        /* Stakeholders Section */
+        .stakeholders {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, var(--cream) 0%, var(--warm-white) 100%);
+        }
+
+        .stakeholders-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .stakeholder-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 2px solid var(--cream);
+        }
+
+        .stakeholder-card:hover {
+            transform: scale(1.05);
+            border-color: var(--secondary-green);
+            box-shadow: 0 10px 30px rgba(46, 125, 50, 0.15);
+        }
+
+        .stakeholder-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .stakeholder-card h5 {
+            font-size: 1.3rem;
+            color: var(--primary-green);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .stakeholder-card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 6rem 2rem;
+            background: white;
+        }
+
+        .pricing-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .pricing-card {
+            background: var(--cream);
+            padding: 3rem 2.5rem;
+            border-radius: 25px;
+            border: 3px solid transparent;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card.featured {
+            background: var(--primary-green);
+            color: white;
+            transform: scale(1.05);
+            box-shadow: 0 20px 50px rgba(46, 125, 50, 0.3);
+        }
+
+        .pricing-card.featured::before {
+            content: 'POPULAR';
+            position: absolute;
+            top: 20px;
+            right: -30px;
+            background: var(--gold);
+            color: white;
+            padding: 0.3rem 3rem;
+            transform: rotate(45deg);
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .pricing-card:hover:not(.featured) {
+            transform: translateY(-10px);
+            border-color: var(--secondary-green);
+            box-shadow: 0 15px 40px rgba(46, 125, 50, 0.2);
+        }
+
+        .pricing-card h5 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .pricing-card.featured h5,
+        .pricing-card.featured p,
+        .pricing-card.featured li {
+            color: white;
+        }
+
+        .price {
+            font-family: 'DM Serif Display', serif;
+            font-size: 3.5rem;
+            margin: 1.5rem 0;
+            color: var(--primary-green);
+        }
+
+        .pricing-card.featured .price {
+            color: white;
+        }
+
+        .price span {
+            font-size: 1.2rem;
+            color: #666;
+        }
+
+        .pricing-card.featured .price span {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .pricing-features li {
+            padding: 0.8rem 0;
+            color: #555;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .pricing-card.featured .pricing-features li {
+            border-bottom-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .pricing-btn {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            background: var(--primary-green);
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin-top: 2rem;
+        }
+
+        .pricing-card.featured .pricing-btn {
+            background: white;
+            color: var(--primary-green);
+        }
+
+        .pricing-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(46, 125, 50, 0.3);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 6rem 2rem;
+            background: var(--primary-green);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            animation: rotate 30s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-content h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+        }
+
+        .email-signup {
+            display: flex;
+            gap: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .email-input {
+            flex: 1;
+            padding: 1.2rem 1.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .submit-btn {
+            padding: 1.2rem 3rem;
+            background: var(--gold);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #FFA000;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(255, 179, 0, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h6 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-green);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent-green);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .hero-text h2 {
+                font-size: 3rem;
+            }
+
+            .section-header h3 {
+                font-size: 2.5rem;
+            }
+
+            .email-signup {
+                flex-direction: column;
+            }
+        }
+
+        /* Scroll Animations */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+
+        .scroll-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="#" class="logo-container">
+                <svg class="logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Wheat/Grain Symbol with Link Chain -->
+                    <circle cx="50" cy="50" r="48" fill="#4CAF50" stroke="#2E7D32" stroke-width="2"/>
+                    
+                    <!-- Wheat stalks -->
+                    <path d="M 40 70 Q 38 55 40 40 L 38 40 L 36 45 L 38 50 L 36 55 L 38 60 L 36 65 L 40 70" 
+                          fill="#FFD54F" stroke="#FFA000" stroke-width="1.5"/>
+                    <path d="M 50 70 Q 48 52 50 35 L 48 35 L 46 42 L 48 48 L 46 54 L 48 60 L 46 66 L 50 70" 
+                          fill="#FFD54F" stroke="#FFA000" stroke-width="1.5"/>
+                    <path d="M 60 70 Q 62 55 60 40 L 62 40 L 64 45 L 62 50 L 64 55 L 62 60 L 64 65 L 60 70" 
+                          fill="#FFD54F" stroke="#FFA000" stroke-width="1.5"/>
+                    
+                    <!-- Connection chain links -->
+                    <ellipse cx="30" cy="25" rx="6" ry="8" fill="none" stroke="white" stroke-width="2.5"/>
+                    <ellipse cx="50" cy="20" rx="6" ry="8" fill="none" stroke="white" stroke-width="2.5"/>
+                    <ellipse cx="70" cy="25" rx="6" ry="8" fill="none" stroke="white" stroke-width="2.5"/>
+                    
+                    <!-- Connecting lines -->
+                    <line x1="35" y1="25" x2="45" y2="20" stroke="white" stroke-width="2.5"/>
+                    <line x1="55" y1="20" x2="65" y2="25" stroke="white" stroke-width="2.5"/>
+                </svg>
+                <div class="brand-text">
+                    <h1>AgroLink</h1>
+                    <p>Agriculture Network</p>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#stakeholders">For You</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+            <a href="#signup" class="cta-button">Join Waitlist</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h2>LinkedIn for Agriculture & Sustainability</h2>
+                <p class="tagline">Connect. Collaborate. Cultivate Success.</p>
+                <p class="hero-description">
+                    Join the global network connecting farmers, buyers, agribusinesses, researchers, and sustainability professionals. Transform how you do business in agriculture.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#signup" class="primary-btn">Get Early Access</a>
+                    <a href="#features" class="secondary-btn">Learn More</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-image-container">
+                    <div class="connection-network">
+                        <div class="network-node center">
+                            <div class="node-icon">🌾</div>
+                            <div class="node-label">You</div>
+                        </div>
+                        <div class="network-node" style="top: 0; left: 50%; transform: translateX(-50%);">
+                            <div class="node-icon">🚜</div>
+                            <div class="node-label">Farmers</div>
+                        </div>
+                        <div class="network-node" style="top: 30%; right: 0;">
+                            <div class="node-icon">🏢</div>
+                            <div class="node-label">Buyers</div>
+                        </div>
+                        <div class="network-node" style="bottom: 30%; right: 0;">
+                            <div class="node-icon">🔬</div>
+                            <div class="node-label">Research</div>
+                        </div>
+                        <div class="network-node" style="bottom: 0; left: 50%; transform: translateX(-50%);">
+                            <div class="node-icon">🎓</div>
+                            <div class="node-label">Universities</div>
+                        </div>
+                        <div class="network-node" style="top: 30%; left: 0;">
+                            <div class="node-icon">🌱</div>
+                            <div class="node-label">Sustainability</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="section-header scroll-reveal">
+            <h3>Everything You Need to Grow</h3>
+            <p>Professional networking meets agricultural commerce in one powerful platform</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card scroll-reveal">
+                <div class="feature-icon">👤</div>
+                <h4>Professional Profiles</h4>
+                <p>Create comprehensive profiles showcasing your expertise, products, and achievements.</p>
+                <ul>
+                    <li>Verification badges</li>
+                    <li>Portfolio showcase</li>
+                    <li>Skills endorsements</li>
+                    <li>Multi-language support</li>
+                </ul>
+            </div>
+
+            <div class="feature-card scroll-reveal">
+                <div class="feature-icon">🤝</div>
+                <h4>Smart Networking</h4>
+                <p>Connect with the right people at the right time with AI-powered recommendations.</p>
+                <ul>
+                    <li>Unlimited connections</li>
+                    <li>Industry groups</li>
+                    <li>Event networking</li>
+                    <li>Follow thought leaders</li>
+                </ul>
+            </div>
+
+            <div class="feature-card scroll-reveal">
+                <div class="feature-icon">🛒</div>
+                <h4>Built-in Marketplace</h4>
+                <p>Buy and sell directly within the platform with secure transaction tools.</p>
+                <ul>
+                    <li>Product listings</li>
+                    <li>RFQ system</li>
+                    <li>Secure payments</li>
+                    <li>Review & ratings</li>
+                </ul>
+            </div>
+
+            <div class="feature-card scroll-reveal">
+                <div class="feature-icon">📚</div>
+                <h4>Knowledge Sharing</h4>
+                <p>Learn from experts and share your insights with the global community.</p>
+                <ul>
+                    <li>Industry news feed</li>
+                    <li>Research papers</li>
+                    <li>Q&A forums</li>
+                    <li>Live webinars</li>
+                </ul>
+            </div>
+
+            <div class="feature-card scroll-reveal">
+                <div class="feature-icon">📊</div>
+                <h4>Market Intelligence</h4>
+                <p>Stay ahead with real-time market data and analytics.</p>
+                <ul>
+                    <li>Price trends</li>
+                    <li>Weather integration</li>
+                    <li>Business analytics</li>
+                    <li>Market insights</li>
+                </ul>
+            </div>
+
+            <div class="feature-card scroll-reveal">
+                <div class="feature-icon">♻️</div>
+                <h4>Sustainability Focus</h4>
+                <p>Showcase and discover sustainable agricultural practices.</p>
+                <ul>
+                    <li>Sustainability scoring</li>
+                    <li>Green certifications</li>
+                    <li>Impact tracking</li>
+                    <li>Best practices</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stakeholders Section -->
+    <section id="stakeholders" class="stakeholders">
+        <div class="section-header scroll-reveal">
+            <h3>Built for Every Agriculture Stakeholder</h3>
+            <p>Whether you grow, buy, sell, research, or support agriculture - AgroLink is for you</p>
+        </div>
+        <div class="stakeholders-grid">
+            <div class="stakeholder-card scroll-reveal">
+                <div class="stakeholder-icon">🚜</div>
+                <h5>Farmers</h5>
+                <p>Find buyers, access markets, get fair prices, and learn best practices from global experts.</p>
+            </div>
+
+            <div class="stakeholder-card scroll-reveal">
+                <div class="stakeholder-icon">🏪</div>
+                <h5>Buyers & Traders</h5>
+                <p>Source quality products, verify suppliers, and negotiate deals directly with producers.</p>
+            </div>
+
+            <div class="stakeholder-card scroll-reveal">
+                <div class="stakeholder-icon">🏢</div>
+                <h5>Agribusinesses</h5>
+                <p>Build brand visibility, acquire customers, and expand into new markets globally.</p>
+            </div>
+
+            <div class="stakeholder-card scroll-reveal">
+                <div class="stakeholder-icon">🛍️</div>
+                <h5>Dealers & Retailers</h5>
+                <p>Manage inventory, strengthen supplier relationships, and grow your customer base.</p>
+            </div>
+
+            <div class="stakeholder-card scroll-reveal">
+                <div class="stakeholder-icon">🔬</div>
+                <h5>Researchers</h5>
+                <p>Collaborate with peers, access real-world data, and share breakthrough discoveries.</p>
+            </div>
+
+            <div class="stakeholder-card scroll-reveal">
+                <div class="stakeholder-icon">🎓</div>
+                <h5>Universities</h5>
+                <p>Place students, secure research funding, and build valuable industry partnerships.</p>
+            </div>
+
+            <div class="stakeholder-card scroll-reveal">
+                <div class="stakeholder-icon">🌱</div>
+                <h5>Sustainability Pros</h5>
+                <p>Promote sustainable practices, certify businesses, and amplify your impact.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <div class="section-header scroll-reveal">
+            <h3>Choose Your Plan</h3>
+            <p>Start free, upgrade when you're ready to unlock the full potential</p>
+        </div>
+        <div class="pricing-grid">
+            <div class="pricing-card scroll-reveal">
+                <h5>Free</h5>
+                <div class="price">$0<span>/month</span></div>
+                <ul class="pricing-features">
+                    <li>✓ Basic profile creation</li>
+                    <li>✓ Up to 500 connections</li>
+                    <li>✓ Basic messaging</li>
+                    <li>✓ Join groups & discussions</li>
+                    <li>✓ View content feed</li>
+                </ul>
+                <a href="#signup" class="pricing-btn">Get Started</a>
+            </div>
+
+            <div class="pricing-card featured scroll-reveal">
+                <h5>Premium</h5>
+                <div class="price">$9.99<span>/month</span></div>
+                <ul class="pricing-features">
+                    <li>✓ Everything in Free</li>
+                    <li>✓ Unlimited connections</li>
+                    <li>✓ Advanced search filters</li>
+                    <li>✓ Profile insights</li>
+                    <li>✓ InMail credits</li>
+                    <li>✓ Featured profile badge</li>
+                    <li>✓ Priority support</li>
+                </ul>
+                <a href="#signup" class="pricing-btn">Start Free Trial</a>
+            </div>
+
+            <div class="pricing-card scroll-reveal">
+                <h5>Business</h5>
+                <div class="price">$49.99<span>/month</span></div>
+                <ul class="pricing-features">
+                    <li>✓ Everything in Premium</li>
+                    <li>✓ Company pages</li>
+                    <li>✓ Unlimited product listings</li>
+                    <li>✓ Advanced analytics</li>
+                    <li>✓ Lead generation tools</li>
+                    <li>✓ API access</li>
+                    <li>✓ Dedicated account manager</li>
+                </ul>
+                <a href="#signup" class="pricing-btn">Contact Sales</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="signup" class="cta-section">
+        <div class="cta-content">
+            <h3>Join 10,000+ Early Adopters</h3>
+            <p>Be among the first to experience the future of agricultural networking. Launch coming Q2 2026.</p>
+            <form class="email-signup" onsubmit="handleSubmit(event)">
+                <input type="email" class="email-input" placeholder="Enter your email address" required>
+                <button type="submit" class="submit-btn">Join Waitlist</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="about">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h6>AgroLink</h6>
+                <p>Transforming agricultural networking and commerce through technology and community.</p>
+            </div>
+            <div class="footer-section">
+                <h6>Product</h6>
+                <ul>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#">Mobile App</a></li>
+                    <li><a href="#">API</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h6>Resources</h6>
+                <ul>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Community</a></li>
+                    <li><a href="#">Webinars</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h6>Company</h6>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Press Kit</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 AgroLink. All rights reserved. | Privacy Policy | Terms of Service</p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll reveal animation
+        const revealElements = document.querySelectorAll('.scroll-reveal');
+        
+        const revealOnScroll = () => {
+            revealElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+
+        // Form submission
+        function handleSubmit(event) {
+            event.preventDefault();
+            const email = event.target.querySelector('input').value;
+            alert(`🎉 Thank you! You've been added to our waitlist at ${email}. We'll notify you when AgroLink launches!`);
+            event.target.reset();
+        }
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
